@@ -1,0 +1,17 @@
+# ask for high privilege 
+sudo: required
+
+# ask for make docker available
+services:
+  - docker
+
+# build dev image
+before_install:
+  - docker build -f Dockerfile.dev -t react-image .
+
+# run tests, 'coverage' used to terminate testing process when it's finished
+# without it process will be waiting for input commands forever, so travis gives no response
+script:
+  - docker run react-image npm run test -- --coverage 
+
+  
