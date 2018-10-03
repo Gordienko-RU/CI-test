@@ -18,10 +18,16 @@ script:
 before_deploy: npm i -g now
 
 deploy:
-  # Run a custom deployment script which we will define below
+
+  # run a custom deployment script
   - provider: script
+
+    # NOW_TOKEN variable set up through travis admin panel
+    # alias and other info set into now.json config file, so it's
+    # possible to use short form command
     script: now --token $NOW_TOKEN && now alias --token $NOW_TOKEN
     skip_cleanup: true
     on:
       master: true
+  
   
