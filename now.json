@@ -1,0 +1,7 @@
+{
+  "name": "react-test-app",
+  "alias": "react-app",
+  "public": true,
+  "type": "docker"
+}
+

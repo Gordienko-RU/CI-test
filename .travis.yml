@@ -14,4 +14,14 @@ before_install:
 script:
   - docker run react-image npm run test -- --coverage 
 
+# install Now CLI on Travis
+before_deploy: npm i -g now
+
+deploy:
+  # Run a custom deployment script which we will define below
+  - provider: script
+    script: now --token $NOW_TOKEN && now alias --token $NOW_TOKEN
+    skip_cleanup: true
+    on:
+      master: true
   
